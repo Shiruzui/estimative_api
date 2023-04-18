@@ -1,0 +1,1 @@
+INDEX_MESSAGE = '''Ainda não há nada aqui. Tente os seguintes endpoints: /estimative [Post] -> Calcula a estimativa via request. /estimative/ [GET] -> Lista todas as estimativas do banco de dados. /estimative/ID [Get] -> Lista a estimativa baseada no ID'''
