@@ -1,1 +1,37 @@
-{}
+{
+    "CALC_D5C11673-5DC0-4323-8197-892078716DA7": {
+        "id": "CALC_D5C11673-5DC0-4323-8197-892078716DA7",
+        "image_url": "https://i.imgur.com/rgONKk1.png",
+        "tasks": [
+            {
+                "max": 3.0,
+                "likely": 2.0,
+                "name": "Tarefa 1",
+                "min": 1.0,
+                "mean": 2.0,
+                "std_dev": 0.3333333333333333
+            },
+            {
+                "max": 6.0,
+                "likely": 5.0,
+                "name": "Tarefa 2",
+                "min": 4.0,
+                "mean": 5.0,
+                "std_dev": 0.3333333333333333
+            }
+        ],
+        "iterations": 5000,
+        "type": "triangular",
+        "mean": 6.99,
+        "median": 7.0,
+        "std_dev": 0.58,
+        "perncetiles": {
+            "P10": 6.24,
+            "P25": 6.59,
+            "P50": 7.0,
+            "P75": 7.38,
+            "P90": 7.75
+        },
+        "created_at": "2023-04-19_17:37:59"
+    }
+}

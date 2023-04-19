@@ -65,6 +65,18 @@ def update_estimative(args, calc_uuid):
     return jsonify(response_payload), status_code
 
 
+@app.route('/estimative/<calc_uuid>/delete', methods=['DELETE'])
+def delete_estimative(calc_uuid):
+    db = Database("db/results.json")
+    existing_data = db.get(calc_uuid)
+
+    if not existing_data:
+        return jsonify({"message": "Estimativa não encontrada"}), 404
+
+    db.delete(calc_uuid)
+    return jsonify(existing_data), 200
+
+
 @app.errorhandler(422)
 def handle_validation_error(err):
     messages = err.data.get("messages", ["Invalid request."])

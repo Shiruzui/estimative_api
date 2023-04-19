@@ -86,7 +86,7 @@ def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_
 
     filename = f"{temp_folder}/{calc_uuid}.png"
     plt.savefig(filename)
-    # plt.close()
+    plt.close()
     imgur_link = upload_imgur(filename, calc_uuid)
     os.remove(filename)
     return imgur_link
