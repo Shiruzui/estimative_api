@@ -3,7 +3,10 @@ from flask import Flask, make_response, jsonify
 from database import Database
 from utils import process_request
 from webargs.flaskparser import use_args
-from validations import request_schema
+from validations import PutRequestSchema, post_request_schema
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -39,16 +42,20 @@ def get_estimative(calc_uuid):
 
 
 @app.route('/estimative', methods=['POST'])
-@use_args(request_schema, location="json")
+@use_args(post_request_schema, location="json")
 def create_estimative(args):
-    response_payload, error, status_code = process_request(args)
-    if error:
-        return jsonify(request_schema.error_messages), status_code
-    return jsonify(response_payload), status_code
+    try:
+        response_payload, error, status_code = process_request(args)
+        if error:
+            return jsonify(post_request_schema.error_messages), status_code
+        return jsonify(response_payload), status_code
+    except Exception as e:
+        logging.exception("An error occurred while processing the request.")
+        return str(e), 500
 
 
 @app.route('/estimative/<calc_uuid>', methods=['PUT'])
-@use_args(request_schema, location="json")
+@use_args(PutRequestSchema, location="json")
 def update_estimative(args, calc_uuid):
     response_payload, error, status_code = process_request(
         args, calc_uuid=calc_uuid, is_update=True)

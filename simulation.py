@@ -66,7 +66,7 @@ def calculate_percentiles(percentiles, total_durations):
     return percentiles_values
 
 
-CLIENT_ID = '56f8eb244ea13c1'
+CLIENT_ID = os.environ.get("IMGUR_API_KEY")
 
 
 def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_duration, calc_uuid):

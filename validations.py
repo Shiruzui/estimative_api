@@ -36,7 +36,7 @@ class ImageSchema(Schema):
         return data
 
 
-class RequestSchema(Schema):
+class PostRequestSchema(Schema):
     tasks = fields.Field(
         required=True,
         error_messages={
@@ -52,4 +52,21 @@ class RequestSchema(Schema):
     image = fields.Nested(ImageSchema, required=True)
 
 
-request_schema = RequestSchema()
+class PutRequestSchema(Schema):
+    tasks = fields.Field(
+        required=True,
+        error_messages={
+            "required": "O campo 'tasks' é obrigatório e deve ser enviado."
+        }
+    )
+    iterations = fields.Integer(missing=1000)
+    type = fields.Str(
+        validate=validate.OneOf(["triangular", "normal"]),
+        missing="triangular"
+    )
+    percentiles = fields.Field(missing=[50, 80, 90, 100])
+    image = fields.Nested(ImageSchema, required=False)
+
+
+post_request_schema = PostRequestSchema()
+put_request_schema = PutRequestSchema()
