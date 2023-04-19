@@ -74,10 +74,10 @@ def to_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, perc
     response |= {
         "tasks": tasks,
         "mean": mean,
+        "iterations": iterations,
+        "type": _type,
         "median": median,
         "std_dev": std_dev,
-        "type": _type,
-        "iterations": iterations,
         "perncetiles": percentiles,
         "created_at": datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
     }
