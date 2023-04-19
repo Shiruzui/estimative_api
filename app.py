@@ -1,7 +1,5 @@
-import uuid
 from flask import Flask, make_response, request, jsonify
 from database import Database
-from messages import INDEX_MESSAGE
 from utils import process_request
 
 app = Flask(__name__)
@@ -10,7 +8,7 @@ app.config['JSON_SORT_KEYS'] = False
 
 @app.route('/')
 def default():
-    return jsonify({"message": INDEX_MESSAGE})
+    return jsonify({"message": 'Ainda não há nada aqui.'})
 
 
 @app.route('/estimative', methods=['GET'])
