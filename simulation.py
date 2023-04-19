@@ -82,12 +82,22 @@ def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_
     plt.xlabel(img_opt['xlabel'])
     plt.ylabel(img_opt['ylabel'])
     plt.legend()
-    filename = f"{calc_uuid}.png"
+
+    temp_folder = check_temp_folder()
+
+    filename = f"{temp_folder}/{calc_uuid}.png"
     plt.savefig(filename)
     # plt.close()
     imgur_link = upload_imgur(filename, calc_uuid)
     os.remove(filename)
     return imgur_link
+
+
+def check_temp_folder():
+    temp_folder = "temp"
+    if not os.path.exists(temp_folder):
+        os.makedirs(temp_folder)
+    return temp_folder
 
 
 def upload_imgur(filename: str, calc_uuid: str):
