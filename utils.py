@@ -73,9 +73,9 @@ def to_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, perc
 
     response |= {
         "tasks": tasks,
-        "mean": mean,
         "iterations": iterations,
         "type": _type,
+        "mean": mean,
         "median": median,
         "std_dev": std_dev,
         "perncetiles": percentiles,
