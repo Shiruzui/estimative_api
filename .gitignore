@@ -3,4 +3,4 @@ temp/
 venv/
 .idea/
 .env
-results.json
+db/results.json
