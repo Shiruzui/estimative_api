@@ -1,7 +1,6 @@
 import os
 from flask import Flask, make_response, jsonify
 from database import Database
-from simulation import check_db_folder
 from utils import process_request
 from webargs.flaskparser import use_args
 from validations import PutRequestSchema, post_request_schema
@@ -84,6 +83,5 @@ def handle_validation_error(err):
 
 
 if __name__ == '__main__':
-    check_db_folder()
     app_port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=app_port, debug=True)

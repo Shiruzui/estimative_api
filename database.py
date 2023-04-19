@@ -1,9 +1,12 @@
 import json
 import os
 
+from simulation import check_folder_existence
+
 
 class Database:
     def __init__(self, filename):
+        self.__check_db_folder()
         self.filename = filename
         self.data = {}
         self.load()
@@ -62,3 +65,7 @@ class Database:
 
     def __repr__(self):
         return repr(self.data)
+
+    def __check_db_folder(self):
+        db_folder = "db"
+        return check_folder_existence(db_folder)
