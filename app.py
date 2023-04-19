@@ -1,3 +1,4 @@
+import os
 from flask import Flask, make_response, jsonify
 from database import Database
 from utils import process_request
@@ -63,4 +64,5 @@ def handle_validation_error(err):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app_port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=app_port, debug=True)
