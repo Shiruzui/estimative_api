@@ -94,18 +94,3 @@ def upload_imgur(filename: str, calc_uuid: str):
     imgur = Imgur(client_id=CLIENT_ID)
     image = imgur.upload_image(filename, title=calc_uuid)
     return image.link
-
-
-def to_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, percentiles, image_link):
-    return {
-        "id": calc_uuid,
-        "tasks": tasks,
-        "mean": mean,
-        "median": median,
-        "std_dev": std_dev,
-        "type": _type,
-        "iterations": iterations,
-        "perncetiles": percentiles,
-        "image_url": image_link,
-        "created_at": datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
-    }
