@@ -1,7 +1,7 @@
-from flask import Flask, make_response, request, jsonify
+from flask import Flask, make_response, jsonify
 from database import Database
 from utils import process_request
-from webargs.flaskparser import use_args, parser
+from webargs.flaskparser import use_args
 from validations import request_schema
 
 app = Flask(__name__)
