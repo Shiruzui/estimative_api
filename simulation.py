@@ -110,5 +110,6 @@ def check_temp_folder():
 
 
 def check_db_folder():
+    print('Oie')
     db_folder = "db"
     return check_folder_existence(db_folder)
