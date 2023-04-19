@@ -42,7 +42,7 @@ def get_estimative(calc_uuid):
 def create_estimative(args):
     response_payload, error, status_code = process_request(args)
     if error:
-        return jsonify(error), status_code
+        return jsonify(request_schema.error_messages), status_code
     return jsonify(response_payload), status_code
 
 
@@ -54,6 +54,12 @@ def update_estimative(args, calc_uuid):
     if error:
         return jsonify(error), status_code
     return jsonify(response_payload), status_code
+
+
+@app.errorhandler(422)
+def handle_validation_error(err):
+    messages = err.data.get("messages", ["Invalid request."])
+    return jsonify(error=messages), 422
 
 
 if __name__ == '__main__':
