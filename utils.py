@@ -65,7 +65,13 @@ def process_request(args, calc_uuid=None, is_update=False):
 
 def to_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, percentiles, generate_image, image_link):
     response = {
-        "id": calc_uuid,
+        "id": calc_uuid
+    }
+
+    if generate_image:
+        response["image_url"] = image_link
+
+    response |= {
         "tasks": tasks,
         "mean": mean,
         "median": median,
@@ -73,10 +79,7 @@ def to_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, perc
         "type": _type,
         "iterations": iterations,
         "perncetiles": percentiles,
-        "created_at": datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+        "created_at": datetime.now().strftime('%Y-%m-%d_%H:%M:%S'),
     }
-
-    if generate_image:
-        response["image_url"] = image_link
 
     return response

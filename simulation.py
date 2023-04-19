@@ -92,14 +92,23 @@ def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_
     return imgur_link
 
 
-def check_temp_folder():
-    temp_folder = "temp"
-    if not os.path.exists(temp_folder):
-        os.makedirs(temp_folder)
-    return temp_folder
-
-
 def upload_imgur(filename: str, calc_uuid: str):
     imgur = Imgur(client_id=CLIENT_ID)
     image = imgur.upload_image(filename, title=calc_uuid)
     return image.link
+
+
+def check_folder_existence(folder_name: str):
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    return folder_name
+
+
+def check_temp_folder():
+    temp_folder = "temp"
+    return check_folder_existence(temp_folder)
+
+
+def check_db_folder():
+    db_folder = "db"
+    return check_folder_existence(db_folder)
