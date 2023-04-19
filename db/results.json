@@ -1,0 +1,106 @@
+{
+    "CALC_E5276828-09BF-4476-AA6E-D283A5FC91FB": {
+        "id": "CALC_E5276828-09BF-4476-AA6E-D283A5FC91FB",
+        "image_url": "https://i.imgur.com/BLk7DXj.png",
+        "tasks": [
+            {
+                "name": "Task 1",
+                "min": 1.0,
+                "max": 3.0,
+                "likely": 2.0,
+                "mean": 2.0,
+                "std_dev": 0.3333333333333333
+            }
+        ],
+        "iterations": 1000,
+        "type": "triangular",
+        "mean": 2.01,
+        "median": 2.02,
+        "std_dev": 0.4,
+        "perncetiles": {
+            "P50": 2.02,
+            "P80": 2.36,
+            "P90": 2.55,
+            "P100": 2.88
+        },
+        "created_at": "2023-04-19_19:59:36"
+    },
+    "CALC_7F8AF4FA-35A3-41A5-8876-533195CF744C": {
+        "id": "CALC_7F8AF4FA-35A3-41A5-8876-533195CF744C",
+        "image_url": "https://i.imgur.com/38ATQdt.png",
+        "tasks": [
+            {
+                "name": "Task 1",
+                "min": 1.0,
+                "max": 3.0,
+                "likely": 2.0,
+                "mean": 2.0,
+                "std_dev": 0.3333333333333333
+            }
+        ],
+        "iterations": 1000,
+        "type": "triangular",
+        "mean": 1.98,
+        "median": 1.98,
+        "std_dev": 0.42,
+        "perncetiles": {
+            "P50": 1.98,
+            "P80": 2.37,
+            "P90": 2.55,
+            "P100": 2.94
+        },
+        "created_at": "2023-04-19_20:00:09"
+    },
+    "CALC_693A7560-F79E-4564-9F34-7396B73FDC90": {
+        "id": "CALC_693A7560-F79E-4564-9F34-7396B73FDC90",
+        "image_url": "https://i.imgur.com/ShVb6BX.png",
+        "tasks": [
+            {
+                "name": "Task 1",
+                "min": 1.0,
+                "max": 3.0,
+                "likely": 2.0,
+                "mean": 2.0,
+                "std_dev": 0.3333333333333333
+            }
+        ],
+        "iterations": 1000,
+        "type": "triangular",
+        "mean": 1.99,
+        "median": 1.99,
+        "std_dev": 0.4,
+        "perncetiles": {
+            "P50": 1.99,
+            "P80": 2.35,
+            "P90": 2.53,
+            "P100": 2.95
+        },
+        "created_at": "2023-04-19_20:00:11"
+    },
+    "CALC_4ADF7677-AA9B-4BE9-BCCF-7EA3C139772F": {
+        "id": "CALC_4ADF7677-AA9B-4BE9-BCCF-7EA3C139772F",
+        "image_url": "https://i.imgur.com/M2vyqzs.png",
+        "tasks": [
+            {
+                "name": "Task 1",
+                "max": 3.0,
+                "min": 1.0,
+                "likely": 2.0,
+                "mean": 2.0,
+                "std_dev": 0.3333333333333333
+            }
+        ],
+        "iterations": 1000,
+        "type": "triangular",
+        "mean": 2.02,
+        "median": 2.01,
+        "std_dev": 0.41,
+        "perncetiles": {
+            "P50": 2.01,
+            "P80": 2.39,
+            "P90": 2.59,
+            "P100": 2.96
+        },
+        "created_at": "2023-04-19_20:05:37"
+    }
+}
