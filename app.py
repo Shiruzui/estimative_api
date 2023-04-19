@@ -1,6 +1,8 @@
 from flask import Flask, make_response, request, jsonify
 from database import Database
 from utils import process_request
+from webargs.flaskparser import use_args, parser
+from validations import request_schema
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -36,30 +38,22 @@ def get_estimative(calc_uuid):
 
 
 @app.route('/estimative', methods=['POST'])
-def calculate():
-    data = request.get_json()
-    response_payload, error_message, status_code = process_request(data)
-
-    if error_message:
-        return jsonify(error_message), status_code
-
-    return jsonify(response_payload), 201
+@use_args(request_schema, location="json")
+def create_estimative(args):
+    response_payload, error, status_code = process_request(args)
+    if error:
+        return jsonify(error), status_code
+    return jsonify(response_payload), status_code
 
 
 @app.route('/estimative/<calc_uuid>', methods=['PUT'])
-def update_estimative(calc_uuid):
-    data = request.get_json()
-    db = Database("db/results.json")
-    if not db.get(calc_uuid):
-        return make_response(jsonify({"message": "Estimativa não encontrada"}), 404)
-
-    response_payload, error_message, status_code = process_request(
-        data, calc_uuid, is_update=True)
-
-    if error_message:
-        return jsonify(error_message), status_code
-
-    return jsonify(response_payload), 200
+@use_args(request_schema, location="json")
+def update_estimative(args, calc_uuid):
+    response_payload, error, status_code = process_request(
+        args, calc_uuid=calc_uuid, is_update=True)
+    if error:
+        return jsonify(error), status_code
+    return jsonify(response_payload), status_code
 
 
 if __name__ == '__main__':

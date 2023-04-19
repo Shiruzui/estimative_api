@@ -1,5 +1,4 @@
 import os
-from datetime import datetime
 import matplotlib.pyplot as plt
 from pyimgur import Imgur
 import numpy as np
