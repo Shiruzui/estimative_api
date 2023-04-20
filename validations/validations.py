@@ -19,10 +19,10 @@ class ImageOptSchema(Schema):
     bins = fields.Integer(missing=20)
     density = fields.Boolean(missing=True)
     alpha = fields.Float(missing=0.75)
-    label = fields.Str(missing="Teste")
-    xlabel = fields.Str(missing="eixo X")
-    ylabel = fields.Str(missing="eixo Y")
-    title = fields.Str(missing="Estimativa")
+    label = fields.Str(missing="Histograma")
+    xlabel = fields.Str(missing="Tempo (dias)")
+    ylabel = fields.Str(missing="Frequência")
+    title = fields.Str(missing="Distribuição de tempo das tarefas")
 
 
 class ImageSchema(Schema):
