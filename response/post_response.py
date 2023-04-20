@@ -21,4 +21,3 @@ def to_post_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations,
     }
 
     return response
-

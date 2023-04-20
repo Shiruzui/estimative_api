@@ -3,6 +3,8 @@ from webargs import fields
 
 
 class TaskSchema(Schema):
+    class Meta:
+        ordered = True
     name = fields.Str(required=True)
     min = fields.Float(required=True)
     likely = fields.Float(required=True)
@@ -34,4 +36,3 @@ class ImageSchema(Schema):
         if data["plot"] and data["img_opt"] is None:
             data["img_opt"] = ImageOptSchema().load({})
         return data
-
