@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    background-color: hsl(233, 12%, 13%);
+}
+section {
+    width: 100%;
+    height: auto;
+}
+pre {
+    width: 100%;
+    height: auto;
+
+    border: 2px solid hsl(240, 5%, 4%);
+    border-radius: 12px;
+    background-color: hsl(225, 10%, 8%);
+
+    font-size: 15px;
+    color: #E0E0E0;
+}
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #EEE;
+}
+h4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FEFEFE;
+}
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #E0E0E0;
+}
+strong, .key {
+    font-size: 16px;
+    color: hsl(196, 100%, 73%);
+}
+
+
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    height: auto;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    row-gap: 17px;
+}
+.listSchema {
+    width: 100%;
+    height: auto;
+}
+.listSchema ul {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+.listSchema ul li {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    column-gap: 7px;
+    list-style: none;
+}
+
+.value_string {
+    font-size: 16px;
+    color: #de7300;
+}
+.value_number {
+    font-size: 16px;
+    color: #74b087;
+}

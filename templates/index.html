@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}">
+</head>
+<body>
+    <main class="main" >
+        <section class="taskSchema">
+            <div class="container">
+                <h1>TaskSchema</h1>
+                <h4>Esquema que representa uma tarefa com nome e estimativas de tempo mínimo, provável e máximo.</h4>
+                <div class="listSchema">
+                    <ul>
+                        <li>
+                            <strong><code>name:</code></strong>
+                            <p>Campo obrigatório do tipo string que representa o nome da tarefa.</p>
+                        </li>
+                        <li>
+                            <strong><code>min:</code></strong>
+                            <p>Campo obrigatório do tipo float que representa a estimativa mínima de tempo para a tarefa.</p>
+                        </li>
+                        <li>
+                            <strong><code>likely:</code></strong>
+                            <p>Campo obrigatório do tipo float que representa a estimativa provável de tempo para a tarefa.</p>
+                        </li>
+                        <li>
+                            <strong><code>max:</code></strong>
+                            <p>Campo obrigatório do tipo float que representa a estimativa máxima de tempo para a tarefa.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="ImageOptSchema">
+            <div class="container">
+                <h1>ImageOptSchema</h1>
+                <h4>Esquema que representa as opções de configuração de uma imagem.</h4>
+                <div class="listSchema">
+                    <ul>
+                        <li>
+                            <strong><code>width:</code></strong>
+                            <p>Campo opcional do tipo inteiro que representa a largura da imagem em pixels. O valor padrão é 16.</p>
+                        </li>
+                        <li>
+                            <strong><code>height:</code></strong>
+                            <p>Campo pcional do tipo inteiro que representa a altura da imagem em pixels. O valor padrão é 9.</p>
+                        </li>
+                        <li>
+                            <strong><code>bins:</code></strong>
+                            <p>Campo opcional do tipo inteiro que representa o número de barras do histograma. O valor padrão é 20.</p>
+                        </li>
+                        <li>
+                            <strong><code>density:</code></strong>
+                            <p>Campo opcional do tipo booleano que indica se o histograma deve ser normalizado. O valor padrão é True.</p>
+                        </li>
+                        <li>
+                            <strong><code>alpha:</code></strong>
+                            <p>Campo opcional do tipo float que representa a transparência da imagem. O valor padrão é 0.75.</p>
+                        </li>
+                        <li>
+                            <strong><code>label:</code></strong>
+                            <p>Campo opcional do tipo string que representa o rótulo da imagem. O valor padrão é "Teste".</p>
+                        </li>
+                        <li>
+                            <strong><code>xlabel:</code></strong>
+                            <p>Campo opcional do tipo string que representa o rótulo do eixo X da imagem. O valor padrão é "eixo X".</p>
+                        </li>
+                        <li>
+                            <strong><code>ylabel:</code></strong>
+                            <p>Campo opcional do tipo string que representa o rótulo do eixo Y da imagem. O valor padrão é "eixo Y".</p>
+                        </li>
+                        <li>
+                            <strong><code>title:</code></strong>
+                            <p>Campo opcional do tipo string que representa o título da imagem. O valor padrão é "Estimativa".</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="ImageSchema">
+            <div class="container">
+                <h1>ImageSchema</h1>
+                <h4>Esquema que representa uma imagem, contendo um indicador se deve ser plotada e as opções de configuração da imagem.</h4>
+                <div class="listSchema">
+                    <ul>
+                        <li>
+                            <strong><code>plot:</code></strong>
+                            <p>Campo obrigatório do tipo booleano que indica se a imagem deve ser plotada.</p>
+                        </li>
+                        <li>
+                            <strong><code>img_opt:</code></strong>
+                            <p>Campo opcional que contém as opções de configuração da imagem. Caso não seja informado, o valor padrão é None.</p>
+                        </li>
+                        <li>
+                            <strong><code>set_default_img_opt:</code></strong>
+                            <p>Método que é chamado após a validação dos campos e define as opções de configuração da imagem como padrão, caso não tenham sido informadas.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="PostRequestSchema">
+            <div class="container">
+                <h1>PostRequestSchema</h1>
+                <h4>Esquema que representa os dados de entrada de uma requisição POST para uma API.</h4>
+                <div class="listSchema">
+                    <ul>
+                        <li>
+                            <strong><code>tasks:</code></strong>
+                            <p>Campo obrigatório que contém uma lista de tarefas no formato definido pelo TaskSchema.</p>
+                        </li>
+                        <li>
+                            <strong><code>iterations:</code></strong>
+                            <p>Campo opcional do tipo inteiro que representa o número de iterações para cálculo das estimativas. O valor padrão é 1000.</p>
+                        </li>
+                        <li>
+                            <strong><code>type:</code></strong>
+                            <p>Campo opcional do tipo string que representa o tipo de distribuição para cálculo das estimativas. Os valores permitidos são "triangular" e "normal". O valor padrão é "triangular".</p>
+                        </li>
+                        <li>
+                            <strong><code>percentiles:</code></strong>
+                            <p>Campo opcional que contém uma lista de percentis a serem calculados. O valor padrão é [50, 80, 90, 100]. Cada elemento da lista deve ser um inteiro entre 0 e 100.</p>
+                        </li>
+                        <li>
+                            <strong><code>image:</code></strong>
+                            <p>Campo obrigatório que contém as informações de plotagem da imagem no formato definido pelo ImageSchema.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="PutRequestSchema">
+            <div class="container">
+                <h1>PutRequestSchema</h1>
+                <h4>Esquema que representa os dados de entrada de uma requisição PUT para uma API.</h4>
+                <div class="listSchema">
+                    <ul>
+                        <li>
+                            <strong><code>tasks:</code></strong>
+                            <p>Campo obrigatório que contém uma lista de tarefas no formato definido pelo TaskSchema.</p>
+                        </li>
+                        <li>
+                            <strong><code>iterations:</code></strong>
+                            <p>Campo opcional do tipo inteiro que representa o número de iterações para cálculo das estimativas. O valor padrão é 1000.</p>
+                        </li>
+                        <li>
+                            <strong><code>type:</code></strong>
+                            <p>Campo opcional do tipo string que representa o tipo de distribuição para cálculo das estimativas. Os valores permitidos são "triangular" e "normal". O valor padrão é "triangular".</p>
+                        </li>
+                        <li>
+                            <strong><code>percentiles:</code></strong>
+                            <p>Campo opcional que contém uma lista de percentis a serem calculados. O valor padrão é [50, 80, 90, 100]. Cada elemento da lista deve ser um inteiro entre 0 e 100.</p>
+                        </li>
+                        <li>
+                            <strong><code>image:</code></strong>
+                            <p>Campo opcional que contém as informações de plotagem da imagem no formato definido pelo ImageSchema. Caso não seja informado, o valor padrão é None.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="Request">
+            <div class="container">
+                <h1>Request</h1>
+                <pre>
+                    {
+                        <code class="key">"tasks":</code> [
+                            {
+                                <code class="key">"name":</code> <code class="value_string">"Tarefa 1"</code>,
+                                <code class="key">"min":</code> <code class="value_number">1.0</code>,
+                                <code class="key">"likely":</code> <code class="value_number">2.0</code>,
+                                <code class="key">"max":</code> <code class="value_number">4.0</code>
+                            },
+                            {
+                                <code class="key">"name":</code> <code class="value_string">"Tarefa 2"</code>,
+                                <code class="key">"min":</code> <code class="value_number">2.0</code>,
+                                <code class="key">"likely":</code> <code class="value_number">3.0</code>,
+                                <code class="key">"max":</code> <code class="value_number">5.0</code>
+                            },
+                            {
+                                <code class="key">"name":</code> <code class="value_string">"Tarefa 3"</code>,
+                                <code class="key">"min":</code> <code class="value_number">3.0</code>,
+                                <code class="key">"likely":</code> <code class="value_number">4.0</code>,
+                                <code class="key">"max":</code> <code class="value_number">6.0</code>
+                            }
+                        ],
+                        <code class="key">"iterations":</code> <code class="value_number">0</code>,
+                        <code class="key">"type":</code> <code class="value_string">"triangular"</code>,
+                        <code class="key">"percentiles":</code> [<code class="value_number">0, 70, 90</code>],
+                        <code class="key">"image":</code> {
+                            <code class="key">"plot":</code> <code class="value_string">true</code>,
+                            <code class="key">"img_opt":</code> {
+                                <code class="key">"width":</code> <code class="value_number">0</code>,
+                                <code class="key">"height":</code> <code class="value_number">0</code>,
+                                <code class="key">"bins":</code> <code class="value_number">0</code>,
+                                <code class="key">"density":</code> <code class="value_string">false</code>,
+                                <code class="key">"alpha":</code> <code class="value_number">0.5</code>,
+                                <code class="key">"label":</code> <code class="value_string">"Histograma"</code>,
+                                <code class="key">"xlabel":</code> <code class="value_string">"Tempo (dias)"</code>,
+                                <code class="key">"ylabel":</code> <code class="value_string">"Frequência"</code>,
+                                <code class="key">"title":</code> <code class="value_string">"Distribuição de tempo das tarefas"</code>
+                            }
+                        }
+                    }
+                </pre>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

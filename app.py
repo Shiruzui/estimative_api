@@ -1,5 +1,5 @@
 import os
-from flask import Flask, make_response, jsonify
+from flask import Flask, make_response, jsonify, render_template
 from db.database import Database
 from webargs.flaskparser import use_args
 import logging
@@ -11,13 +11,13 @@ from validations.put_request_validations import put_request_schema
 
 logging.basicConfig(level=logging.DEBUG)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates/')
 app.config['JSON_SORT_KEYS'] = False
 
 
 @app.route('/')
 def default():
-    return jsonify({"message": 'Ainda não há nada aqui.'})
+    return render_template('index.html')
 
 
 @app.route('/estimative', methods=['GET'])
