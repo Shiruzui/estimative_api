@@ -1,4 +1,4 @@
-from marshmallow import Schema,validate
+from marshmallow import Schema, validate
 from webargs import fields
 from validations.validations import ImageSchema
 
@@ -16,8 +16,7 @@ class PutRequestSchema(Schema):
         missing="triangular"
     )
     percentiles = fields.Field(missing=[50, 80, 90, 100])
-    image = fields.Nested(ImageSchema, required=False)
-
+    image = fields.Nested(ImageSchema, required=True)
 
 
 put_request_schema = PutRequestSchema()

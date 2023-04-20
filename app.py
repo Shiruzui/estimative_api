@@ -5,6 +5,7 @@ from webargs.flaskparser import use_args
 import logging
 
 from my_requests.post_request import process_post_request
+from my_requests.put_request import process_put_request
 from validations.post_request_validations import post_request_schema
 from validations.put_request_validations import put_request_schema
 
@@ -59,8 +60,7 @@ def create_estimative(args):
 @app.route('/estimative/<calc_uuid>', methods=['PUT'])
 @use_args(put_request_schema, location="json")
 def update_estimative(args, calc_uuid):
-    response_payload, error, status_code = process_post_request(
-        args, calc_uuid=calc_uuid, is_update=True)
+    response_payload, error, status_code = process_put_request(args, calc_uuid)
     if error:
         return jsonify(error), status_code
     return jsonify(response_payload), status_code

@@ -1,12 +1,12 @@
 from utils.utils import get_formatted_current_date
 
 
-def to_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, percentiles, generate_image, image_link):
+def to_post_response(calc_uuid, tasks, mean, median, std_dev, _type, iterations, percentiles, image_link):
     response = {
         "id": calc_uuid
     }
 
-    if generate_image:
+    if image_link:
         response["image_url"] = image_link
 
     response |= {
