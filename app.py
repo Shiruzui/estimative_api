@@ -13,7 +13,6 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 
-
 @app.route('/estimative', methods=['POST'])
 @use_args(post_request_schema, location="json")
 def create_estimative(args):

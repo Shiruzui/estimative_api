@@ -17,13 +17,11 @@ def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_
     plt.axvline(median_duration, color=img_opt['median_color'],
                 linestyle='dotted', linewidth=4, label='Mediana')
     plt.xlabel(img_opt['xlabel'])
-    plt.ylabel(set_ylabel(['ylabel']))
+    plt.ylabel(set_ylabel(img_opt['density']))
     plt.legend()
 
     if img_opt['grid']:
         plt.grid(color='grey', alpha=.75)
-
-    
 
     temp_folder = check_temp_folder()
 
@@ -51,4 +49,4 @@ def upload_imgur(filename: str, calc_uuid: str):
 
 
 def set_ylabel(density:bool):
-    return 'Densidade de probabilidade"' if density else 'Frequência'
+    return 'Densidade de probabilidade' if density else 'Frequência'
