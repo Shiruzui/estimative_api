@@ -1,7 +1,8 @@
 import os
+import io
+import base64
+import requests
 import matplotlib.pyplot as plt
-from pyimgur import Imgur
-from utils.utils import check_temp_folder
 
 CLIENT_ID = os.environ.get("IMGUR_API_KEY")
 
@@ -23,22 +24,25 @@ def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_
     if img_opt['grid']:
         plt.grid(color='grey', alpha=.75)
 
-    temp_folder = check_temp_folder()
-
-    filename = f"{temp_folder}/{calc_uuid}.png"
-    plt.savefig(filename)
+    img_data = io.BytesIO()
+    plt.savefig(img_data, format='png')
     plt.close()
-    imgur_link = upload_imgur(filename, calc_uuid)
-    os.remove(filename)
+
+    img_data.seek(0)
+    imgur_link = upload_imgur(img_data, calc_uuid)
+
     return imgur_link
 
 
-def upload_imgur(filename: str, calc_uuid: str):
-    imgur = Imgur(client_id=CLIENT_ID)
-    image = imgur.upload_image(filename, title=calc_uuid)
-    image.privacy = 'hidden'
-    image.update()
-    return image.link
+def upload_imgur(img_data, calc_uuid):
+    headers = {"Authorization": f"Client-ID {CLIENT_ID}"}
+    data = {"image": base64.b64encode(img_data.read()).decode('ascii'), "type": "base64", "name": f"{calc_uuid}.png", "title": calc_uuid}
+    response = requests.post('https://api.imgur.com/3/upload', headers=headers, data=data)
+
+    if response.status_code == 200:
+        return response.json()['data']['link']
+    else:
+        raise Exception(f"Upload failed: {response.json()}")
 
 
 def set_ylabel(density: bool):
