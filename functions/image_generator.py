@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from pyimgur import Imgur
 from utils.utils import check_temp_folder
 
-
 CLIENT_ID = os.environ.get("IMGUR_API_KEY")
+
 
 def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_duration, calc_uuid):
     plt.rcParams.update({'font.size': img_opt['font_size']})
@@ -33,8 +33,6 @@ def create_and_upload_histogram(img_opt, total_durations, mean_duration, median_
     return imgur_link
 
 
-
-
 def upload_imgur(filename: str, calc_uuid: str):
     imgur = Imgur(client_id=CLIENT_ID)
     image = imgur.upload_image(filename, title=calc_uuid)
@@ -42,11 +40,6 @@ def upload_imgur(filename: str, calc_uuid: str):
     image.update()
     return image.link
 
-# def upload_imgur(filename: str, calc_uuid: str):
-#     imgur = Imgur(client_id=CLIENT_ID)
-#     image = imgur.upload_image(filename, title=calc_uuid)
-#     return image.link
 
-
-def set_ylabel(density:bool):
+def set_ylabel(density: bool):
     return 'Densidade de probabilidade' if density else 'Frequência'

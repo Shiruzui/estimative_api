@@ -20,16 +20,18 @@ def create_estimative(args):
     if error:
         return jsonify(post_request_schema.error_messages), status_code
     return jsonify(response_payload), status_code
-    
+
 
 @app.errorhandler(422)
 def handle_validation_error(err):
     messages = err.data.get("messages", ["Invalid request."])
     return jsonify(error=messages), 422
 
+
 @app.errorhandler(TaskValueError)
 def handle_task_value_error(err):
     return jsonify(error=str(err.description)), err.code
+
 
 @app.errorhandler(ColorValueError)
 def handle_color_value_error(err):

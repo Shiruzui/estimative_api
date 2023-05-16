@@ -1,4 +1,7 @@
 import uuid
+
+import numpy as np
+
 from functions.image_generator import create_and_upload_histogram
 from functions.simple_statistics import calculate_mean_std_dev, calculate_mean, calculate_median, calculate_std_dev, \
     calculate_percentiles
@@ -15,10 +18,10 @@ def process_post_request(args):
     else:
         tasks = [tasks_schema.load(tasks)]
 
-
     iterations = args['iterations']
     distribution_type = args['type']
     percentiles = args["percentiles"]
+    participants = args['participants']
 
     if isinstance(percentiles, int):
         percentiles = [percentiles]
@@ -28,7 +31,7 @@ def process_post_request(args):
 
     tasks = calculate_mean_std_dev(tasks=tasks)
     total_durations = run_monte_carlo_simulation(
-        tasks, iterations, distribution_type)
+        tasks, iterations, distribution_type, participants)
 
     mean_duration = calculate_mean(total_durations)
     median_duration = calculate_median(total_durations)
